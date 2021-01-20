@@ -1,53 +1,54 @@
 # 4A Trading
 This project, 4A is a trading dashboard that enables retail investors to make an educated decision on whether to buy or sell a stock of their choice. The algorithm predicts future price movements of a stock using Natural Language Processing (NLP) sentiment analysis, Machine learning prediction.
 
-## Libraries used
-- os
-- re
-- ta
-- json
+## Libraries used:
+
+### Basic Functionalities
+- os, dotenv, pathlib
 - pandas
 - numpy
-- panel
-- dotenv
 - datetime
-- warnings
-- pathlib
-- datetime
-- yfinance
-- finhub
-- nltk
+- requests, json
+
+### NLP
+- re
+- nltk, nltk.sentiment.vader
 - newsapi
+- tweepy
+
+### ML
 - tensorflow
 - sklearn
-- requests
+
+### Financial Data & Analysis
+- [ta](https://ta-lib.org) (Technical Anlaysis Library)
+- yfinance
+- [finnhub](https://finnhub.io/)
+- alpaca_trade_api
+
+### Data Visualization
+- panel
 - matplotlib
 - hvplot
-- tweepy
-- alpaca_trade_api
-- plotly.express
-- boken.models
-- nltk.sentiment.vader
+- plotly
+- bokeh
 
 ## Tools used
 - Alpaca
 - News API
 - Twitter API
 - Stock news API
-- Finhub
+- Finnhub
+- Alphavantage
 
 ## Keys/tokens required prior to running
 Assuming the above tools have already been installed, the following keys/ tokens are required to run the project notebooks.
-- Alpaca Trade API (https://app.alpaca.markets/)
-- Stock News API key (https://stocknewsapi.com/)
-- News API Key (https://newsapi.org/)
-- Twitter API key (https://developer.twitter.com/en/docs/twitter-api)
-- Twitter secret key
-- Twitter access token
-- Twitter access secret token
-- Twitter bearer token
-- Finhub API key (https://finnhub.io/)
-- Finhub Sandbox key 
+- [Alpaca Trade API](https://app.alpaca.markets/)
+- [Stock News API key](https://stocknewsapi.com/)
+- [News API Key](https://newsapi.org/)
+- [Twitter API keys (Secret Key, Token, Secret Token, Bearer Token)](https://developer.twitter.com/en/docs/twitter-api)
+- [Finhub API key](https://finnhub.io/)
+- [AlphaVantage](https://www.alphavantage.co)
 
 ## Analysis performed
 - v3_stock_api_sentiment_analysis.ipynb: Stock news sentiment analysis and returns prediction
@@ -78,6 +79,9 @@ Assuming the above tools have already been installed, the following keys/ tokens
 - The raw tweets (by the hour) are saved to a dataframe
 
 ### Technical and fundamental analysis
+- Candlestick data is pulled in for the given time period.
+- Values are validated and any non-trading periods are dropped
+- Financial statements ingested and parsed for relevant line items
 
 ## Metrics calculated
 ### News sentiment analysis
@@ -97,6 +101,8 @@ Assuming the above tools have already been installed, the following keys/ tokens
 - Real vs predicted returns
 
 ### Technical and fundamental analysis
+- Calculated technical indicators and interpreted signals (bullish/bearish/neutral)
+- Calculated fundamental ratios
 
 ## Hyperparameters
 ### News sentiment analysis
@@ -121,6 +127,7 @@ Assuming the above tools have already been installed, the following keys/ tokens
 - Batch size: 2
 
 ### Technical and fundamental analysis
+- N/A -- Used Lasso Linear Regression model
 
 ## Plots created
 ### News sentiment analysis
@@ -134,6 +141,10 @@ Assuming the above tools have already been installed, the following keys/ tokens
 - Real vs predicted returns
 
 ### Technical and fundamental analysis
+- Closing prices, SMAs
+- Chaikin Money Flow Oscillator
+- Relative Strength Index
+- Tables for Candlestick Data, Technical Outlook, Fundamental Ratios
 
 ## Interpretation
 ### News sentiment analysis
@@ -145,8 +156,6 @@ Assuming the above tools have already been installed, the following keys/ tokens
 - From the Twitter sentiment vs Daily percent change graph, the sentiment score varies wildly with respect to the returns.
 - Here too, the predicted retrun falls flat compared with the real returns
 
-### Technical and fundamental analysis
-
 ## Panel Visualization
 - The requisite notebooks are first loaded.
 - The technical analysis, twitter sentiment and news sentiment dataframes are combined
@@ -156,9 +165,13 @@ Assuming the above tools have already been installed, the following keys/ tokens
 - A panel dashboard is created with Welcome column that lets a user input a ticker of their choice and a single keyword; Individual predictions columns and Financial information
 
 ## Conclusion
+- From our dashboard, we hope to provide retail investors with the information and confidence to place their first trades
+- By integrating both sentiment analyses and technical analyses, investors should hopefully gain a more holistic view of the ticker they are interested in.
+
 
 ## To run the main notebook
-- Open the terminal and run `panel serve 4a_returns_predictor.ipynb` --show
+- Run [4a_returns_predictor.ipynb](4a_returns_predictor.ipynb)
+- Open the terminal and run: `panel serve 4a_returns_predictor.ipynb --show`
 
 ## Difficulties/ Challenges faced
 - The NEWS API free plan allows only 1 month of data to be pulled, while the stock news API limits to 100 calls under the free plan.
@@ -171,7 +184,7 @@ Assuming the above tools have already been installed, the following keys/ tokens
 - An algorithmic trading strategy would have been developed and connected to a live trading platform
 
 ## Presentation Link
-- https://docs.google.com/presentation/d/1lxMbRWSGchM7qw1O8nyFVtkrnmOeV-CiL7Z4Pkx-Gl0/edit?usp=sharing
+- [Google Slides](https://docs.google.com/presentation/d/1lxMbRWSGchM7qw1O8nyFVtkrnmOeV-CiL7Z4Pkx-Gl0/edit?usp=sharing)
 
 ## Contributors
 - Albert Kong
